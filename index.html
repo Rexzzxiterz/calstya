@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Love ❤️</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  padding: 50px 20px;
+}
+
+header h1 {
+  font-size: 40px;
+  text-shadow: 0 0 20px rgba(255,255,255,0.8);
+}
+
+header p {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+/* Album Grid */
+.album {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+/* Foto */
+.photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.photo img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+.photo:hover img {
+  transform: scale(1.1);
+  filter: brightness(70%);
+}
+
+/* Caption */
+.caption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.photo:hover .caption {
+  opacity: 1;
+}
+
+/* Love Animation */
+.heart {
+  position: fixed;
+  color: red;
+  font-size: 20px;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+
+/* Message */
+.message {
+  padding: 40px 20px;
+}
+
+.message h2 {
+  margin-bottom: 15px;
+}
+
+.message p {
+  max-width: 500px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+/* Footer */
+footer {
+  padding: 20px;
+  font-size: 14px;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+  <h1>🎉 Happy Birthday Sayangku 💖</h1>
+  <p>Album Kenangan Kita</p>
+</header>
+
+<!-- Album -->
+<div class="album">
+
+  <div class="photo">
+    <img src="foto1.jpg">
+    <div class="caption">Senyummu yang aku suka 💕</div>
+  </div>
+
+  <div class="photo">
+    <img src="foto2.jpg">
+    <div class="caption">Momen indah kita ✨</div>
+  </div>
+
+  <div class="photo">
+    <img src="foto3.jpg">
+    <div class="caption">Cantik banget 😍</div>
+  </div>
+
+  <div class="photo">
+    <img src="foto4.jpg">
+    <div class="caption">Selalu bikin bahagia ❤️</div>
+  </div>
+
+</div>
+
+<!-- Pesan -->
+<div class="message">
+  <h2>Untuk Kamu 💌</h2>
+  <p>
+    Selamat ulang tahun ya sayangku 💖  
+    Semoga kamu selalu bahagia, sehat, dan semua impian kamu tercapai.  
+    Terima kasih sudah hadir di hidup aku dan jadi bagian terindah dalam setiap hariku.  
+    Aku sayang kamu selalu ❤️
+  </p>
+</div>
+
+<footer>
+  Dibuat dengan cinta 💕 oleh pacarmu
+</footer>
+
+<!-- Musik (opsional) -->
+<audio autoplay loop>
+  <source src="lagu.mp3" type="audio/mp3">
+</audio>
+
+<!-- Love effect -->
+<script>
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (10 + Math.random() * 20) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}, 300);
+</script>
+
+</body>
+</html>
