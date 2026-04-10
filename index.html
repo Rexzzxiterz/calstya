@@ -3,101 +3,118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Untuk Kamu ❤️</title>
+<title>Happy Birthday My Love</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
 
 body {
-  background: #000;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #1a1a2e, #000);
   color: white;
-  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-/* START */
-.start {
+/* HERO */
+.hero {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
 }
 
-button {
-  padding: 15px 30px;
-  background: #ff4d88;
-  border: none;
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  color: #ff4d88;
+  text-shadow: 0 0 25px rgba(255,77,136,0.7);
+}
+
+.hero p {
+  margin-top: 10px;
+  opacity: 0.7;
+}
+
+.btn {
+  margin-top: 30px;
+  padding: 12px 25px;
+  border: 1px solid #ff4d88;
   border-radius: 30px;
   color: white;
-  font-size: 18px;
-  box-shadow: 0 0 20px #ff4d88;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-.hidden { display: none; }
+.btn:hover {
+  background: #ff4d88;
+  box-shadow: 0 0 20px #ff4d88;
+}
 
-/* VIDEO */
-.video {
+/* SLIDESHOW */
+.slideshow {
+  padding: 60px 20px;
   text-align: center;
-  padding: 20px;
 }
 
-video {
+.slide img {
   width: 90%;
   max-width: 400px;
   border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255,77,136,0.3);
 }
 
-/* CHAT */
-.chat {
+/* QUOTE */
+.quote {
+  padding: 60px 20px;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+  gap: 10px;
   padding: 20px;
 }
 
-.bubble {
-  max-width: 70%;
-  padding: 10px 15px;
+.gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
   border-radius: 15px;
-  margin: 10px;
+  transition: 0.4s;
 }
 
-.me {
-  background: #ff4d88;
-  margin-left: auto;
-}
-
-.her {
-  background: #333;
-}
-
-/* STORY */
-.story {
-  text-align: center;
-}
-
-.story img {
-  width: 80%;
-  max-width: 300px;
-  border-radius: 15px;
-  margin: 15px;
+.gallery img:hover {
+  transform: scale(1.05);
+  filter: brightness(70%);
 }
 
 /* ENDING */
 .ending {
   text-align: center;
-  padding: 40px;
+  padding: 60px 20px;
 }
 
-.ending h1 {
+.ending h2 {
+  font-family: 'Playfair Display', serif;
   color: #ff4d88;
-  text-shadow: 0 0 20px #ff4d88;
+  margin-bottom: 10px;
 }
 
-/* LOVE */
+/* HEART */
 .heart {
   position: fixed;
   color: #ff4d88;
@@ -113,64 +130,54 @@ video {
 
 <body>
 
-<!-- START -->
-<div class="start" id="start">
-  <h1>Hai Sayang 💖</h1>
-  <button onclick="mulai()">Klik Aku</button>
-</div>
+<!-- HERO -->
+<section class="hero">
+  <h1>Happy Birthday My Love 💖</h1>
+  <p>Sebuah cerita kecil untuk kamu</p>
+  <div class="btn" onclick="scrollToContent()">Mulai</div>
+</section>
 
-<!-- VIDEO -->
-<div class="video hidden" id="video">
-  <video src="video.mp4" autoplay loop></video>
-</div>
+<!-- SLIDESHOW -->
+<section class="slideshow" id="content">
+  <div class="slide"><img src="foto1.jpg"></div>
+</section>
 
-<!-- CHAT -->
-<div class="chat hidden" id="chat">
-  <div class="bubble me">Hai kamu ❤️</div>
-  <div class="bubble her">Kenapa? 😊</div>
-  <div class="bubble me">Aku cuma mau bilang...</div>
-  <div class="bubble me">Aku sayang banget sama kamu 💖</div>
-  <div class="bubble her">Aku juga sayang kamu 😭</div>
-</div>
+<!-- QUOTE -->
+<section class="quote">
+  "Di antara banyak hal indah di dunia ini,  
+  kamu adalah yang paling aku syukuri."
+</section>
 
-<!-- STORY -->
-<div class="story hidden" id="story">
-  <img src="foto1.jpg">
+<!-- GALLERY -->
+<section class="gallery">
   <img src="foto2.jpg">
   <img src="foto3.jpg">
-</div>
+  <img src="foto4.jpg">
+  <img src="foto5.jpg">
+</section>
 
 <!-- ENDING -->
-<div class="ending hidden" id="ending">
-  <h1>🎉 Happy Birthday 💖</h1>
-  <p>Aku janji akan selalu ada buat kamu… dalam keadaan apapun ❤️</p>
-</div>
+<section class="ending">
+  <h2>Untuk Kamu</h2>
+  <p>
+    Selamat ulang tahun.  
+    Semoga semua hal baik selalu datang ke hidup kamu.  
+    Dan semoga aku tetap jadi bagian dari kebahagiaan itu. ❤️
+  </p>
+</section>
 
 <!-- MUSIC -->
-<audio id="music" loop>
+<audio autoplay loop>
   <source src="lagu.mp3" type="audio/mp3">
 </audio>
 
 <script>
-function mulai() {
-  document.getElementById("start").classList.add("hidden");
-  document.getElementById("video").classList.remove("hidden");
-  document.getElementById("music").play();
-
-  setTimeout(() => {
-    document.getElementById("chat").classList.remove("hidden");
-  }, 5000);
-
-  setTimeout(() => {
-    document.getElementById("story").classList.remove("hidden");
-  }, 10000);
-
-  setTimeout(() => {
-    document.getElementById("ending").classList.remove("hidden");
-  }, 15000);
+// scroll
+function scrollToContent() {
+  document.getElementById("content").scrollIntoView({ behavior: "smooth" });
 }
 
-// LOVE EFFECT
+// heart effect
 setInterval(() => {
   let heart = document.createElement("div");
   heart.className = "heart";
@@ -180,7 +187,7 @@ setInterval(() => {
   document.body.appendChild(heart);
 
   setTimeout(() => heart.remove(), 6000);
-}, 300);
+}, 400);
 </script>
 
 </body>
