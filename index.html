@@ -25,6 +25,9 @@ body {
   background: var(--bg);
   overflow-x: hidden;
   color: #444;
+
+  /* bikin teks global lebih jelas */
+  text-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
 
 /* BACKGROUND GLOW */
@@ -52,15 +55,22 @@ body::before {
   font-family: 'Playfair Display', serif;
   font-size: 48px;
   color: var(--pink);
+
+  /* biar tajam + elegan */
+  text-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  -webkit-text-stroke: 0.5px rgba(255,255,255,0.5);
 }
 
 /* CARD */
 .card {
-  background: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.75);
   backdrop-filter: blur(14px);
   border-radius: 20px;
   padding: 30px;
   margin: 20px;
+
+  /* efek mahal */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 /* SECTION */
@@ -83,6 +93,15 @@ img {
   line-height: 1.8;
   white-space: pre-line;
   min-height: 150px;
+
+  color: #333;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+/* TITLE */
+h2 {
+  color: var(--pink);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 /* FADE */
@@ -119,7 +138,7 @@ img {
 
 <!-- HERO -->
 <section class="hero fade">
-  <h1>Happy Birthday<br>Callstya Aldevira Fitria Ermian/h1>
+  <h1>Happy Birthday<br>Callstya Aldevira Fitria Ermian</h1>
 </section>
 
 <!-- IMAGE -->
@@ -132,7 +151,7 @@ img {
 <!-- LETTER -->
 <section class="section fade">
   <div class="card">
-    <h2 style="color:#ff8fb1;">Untuk Kamu 💌</h2>
+    <h2>Untuk Kamu 💌</h2>
     <p class="letter" id="text"></p>
   </div>
 </section>
@@ -147,8 +166,8 @@ const obs = new IntersectionObserver(entries => {
 });
 items.forEach(el => obs.observe(el));
 
-// TYPING EFFECT (SURAT)
-const message = `Selamat ulang tahun, Aldevira 💖
+// TYPING EFFECT
+const message = `Selamat ulang tahun, Callstya Aldevira 💖
 
 Aku gak tau harus mulai dari mana,
 tapi yang pasti…
@@ -178,18 +197,15 @@ setInterval(() => {
   setTimeout(() => l.remove(), 8000);
 }, 500);
 
-// MUSIC FADE IN
+// MUSIC FADE
 let audio = new Audio("lagu.mp3");
 audio.volume = 0;
 
 window.addEventListener("click", () => {
   audio.play();
   let fade = setInterval(() => {
-    if (audio.volume < 1) {
-      audio.volume += 0.05;
-    } else {
-      clearInterval(fade);
-    }
+    if (audio.volume < 1) audio.volume += 0.05;
+    else clearInterval(fade);
   }, 200);
 });
 </script>
