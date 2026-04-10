@@ -11,7 +11,6 @@
 :root {
   --text: #1d1d1f;
   --sub: #6e6e73;
-  --bg: #ffffff;
 }
 
 * {
@@ -22,8 +21,9 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--bg);
+  background: white;
   color: var(--text);
+  overflow-x: hidden;
 }
 
 /* HERO */
@@ -33,25 +33,38 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 20px;
 }
 
 .hero h1 {
-  font-size: 56px;
+  font-size: 60px;
   font-weight: 600;
 }
 
 .hero p {
-  margin-top: 10px;
-  font-size: 20px;
   color: var(--sub);
+  margin-top: 10px;
+}
+
+/* PARALLAX IMAGE */
+.parallax {
+  height: 80vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax img {
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  transform: translateY(0);
+  transition: transform 0.2s linear;
 }
 
 /* SECTION */
 .section {
+  padding: 120px 20px;
   max-width: 900px;
   margin: auto;
-  padding: 120px 20px;
   text-align: center;
 }
 
@@ -61,43 +74,35 @@ body {
 }
 
 .section p {
-  font-size: 18px;
   color: var(--sub);
+  font-size: 18px;
   line-height: 1.7;
 }
 
-/* IMAGE BLOCK */
-.image-block {
-  width: 100%;
-  margin: 60px 0;
-}
-
-.image-block img {
-  width: 100%;
+/* ZOOM IMAGE */
+.zoom {
+  overflow: hidden;
   border-radius: 16px;
 }
 
-/* GRID */
+.zoom img {
+  width: 100%;
+  transition: transform 0.6s ease;
+}
+
+.zoom.show img {
+  transform: scale(1.1);
+}
+
+/* GALLERY */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
   gap: 20px;
+  margin-top: 40px;
 }
 
-.gallery img {
-  width: 100%;
-  border-radius: 12px;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 80px 20px;
-  font-size: 14px;
-  color: var(--sub);
-}
-
-/* ANIMATION */
+/* FADE */
 .fade {
   opacity: 0;
   transform: translateY(40px);
@@ -107,6 +112,13 @@ footer {
 .fade.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 80px;
+  color: var(--sub);
 }
 </style>
 </head>
@@ -121,26 +133,33 @@ footer {
   </div>
 </section>
 
-<!-- IMAGE HERO -->
-<div class="image-block fade">
-  <img src="https://picsum.photos/1200/700">
+<!-- PARALLAX -->
+<div class="parallax">
+  <img src="https://picsum.photos/1200/800" id="parallaxImg">
 </div>
 
 <!-- STORY -->
 <section class="section fade">
   <h2>Kenangan</h2>
   <p>
-    Tidak semua momen harus besar untuk jadi berarti.  
-    Kadang, hal sederhana jadi spesial karena kamu ada di dalamnya.
+    Setiap momen yang kita lewati mungkin sederhana,  
+    tapi semuanya terasa berbeda karena kamu ada di dalamnya.
   </p>
+</section>
+
+<!-- ZOOM IMAGE -->
+<section class="section">
+  <div class="zoom fade">
+    <img src="https://picsum.photos/1000/700">
+  </div>
 </section>
 
 <!-- GALLERY -->
 <section class="section">
   <div class="gallery">
-    <img src="https://picsum.photos/500/600?1">
-    <img src="https://picsum.photos/500/600?2">
-    <img src="https://picsum.photos/500/600?3">
+    <div class="zoom fade"><img src="https://picsum.photos/500/600?1"></div>
+    <div class="zoom fade"><img src="https://picsum.photos/500/600?2"></div>
+    <div class="zoom fade"><img src="https://picsum.photos/500/600?3"></div>
   </div>
 </section>
 
@@ -150,17 +169,17 @@ footer {
   <p>
     Selamat ulang tahun.  
     Semoga semua hal baik selalu datang ke hidup kamu.  
-    Dan semoga aku tetap jadi bagian kecil dari kebahagiaan itu.
+    Dan semoga aku tetap ada di setiap cerita itu.
   </p>
 </section>
 
 <footer class="fade">
-  Made with care.
+  Made with intention.
 </footer>
 
 <script>
-// ANIMASI APPLE STYLE (smooth)
-const elements = document.querySelectorAll('.fade');
+// FADE + ZOOM OBSERVER
+const elements = document.querySelectorAll('.fade, .zoom');
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -168,9 +187,17 @@ const observer = new IntersectionObserver(entries => {
       entry.target.classList.add('show');
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.2 });
 
 elements.forEach(el => observer.observe(el));
+
+// PARALLAX EFFECT
+const img = document.getElementById('parallaxImg');
+
+window.addEventListener('scroll', () => {
+  let scroll = window.scrollY;
+  img.style.transform = `translateY(${scroll * 0.2}px)`;
+});
 </script>
 
 </body>
