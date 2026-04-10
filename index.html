@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Love 💖</title>
+<title>For Aldevira 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
@@ -20,7 +20,7 @@ body {
   overflow-x: hidden;
 }
 
-/* BACKGROUND VIDEO */
+/* VIDEO BG */
 video.bg {
   position: fixed;
   top: 0;
@@ -33,11 +33,12 @@ video.bg {
 
 /* GLASS */
 .glass {
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(12px);
   padding: 30px;
   margin: 20px;
   border-radius: 20px;
+  text-align: center;
 }
 
 /* HERO */
@@ -46,16 +47,15 @@ video.bg {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  text-align: center;
 }
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 40px;
+  font-size: 38px;
   color: #ff4d88;
 }
 
+/* BUTTON */
 .btn {
   margin-top: 20px;
   padding: 10px 25px;
@@ -76,7 +76,7 @@ video.bg {
   border-radius: 15px;
 }
 
-/* MUSIC BUTTON */
+/* MUSIC */
 .music-btn {
   position: fixed;
   bottom: 20px;
@@ -87,7 +87,7 @@ video.bg {
   cursor: pointer;
 }
 
-/* ANIMATION */
+/* ANIMASI */
 .fade {
   opacity: 0;
   transform: translateY(30px);
@@ -103,7 +103,7 @@ video.bg {
 
 <body>
 
-<!-- VIDEO BACKGROUND -->
+<!-- BG VIDEO -->
 <video class="bg" autoplay muted loop>
   <source src="bg.mp4" type="video/mp4">
 </video>
@@ -112,12 +112,12 @@ video.bg {
 <section class="hero">
   <div class="glass fade">
     <h1>Happy Birthday 💖</h1>
-    <p>Untuk kamu yang paling spesial</p>
+    <p>Untuk kamu, Aldevira Fitria Ermian</p>
     <div class="btn" onclick="scrollDown()">Masuk</div>
   </div>
 </section>
 
-<!-- CONTENT -->
+<!-- GALLERY -->
 <section class="glass fade" id="content">
   <h2>Kenangan Kita</h2>
   <div class="gallery">
@@ -128,13 +128,26 @@ video.bg {
   </div>
 </section>
 
+<!-- PESAN -->
 <section class="glass fade">
-  <h2>Pesan Untuk Kamu</h2>
+  <h2>Untuk Aldevira 💌</h2>
   <p>
-    Selamat ulang tahun 💖  
-    Terima kasih sudah jadi bagian dari hidup aku.  
-    Kamu bukan cuma spesial… kamu segalanya buat aku.
+    Selamat ulang tahun, Aldevira Fitria Ermian 💖  
+    Dari sekian banyak hal indah di dunia ini,  
+    kamu adalah yang paling aku syukuri.  
+
+    Terima kasih sudah hadir di hidup aku,  
+    dan selalu jadi alasan aku tersenyum setiap hari.  
+
+    Aku harap di hari spesial kamu ini,  
+    semua kebahagiaan datang ke kamu…  
+    dan aku masih jadi bagian dari itu ❤️
   </p>
+</section>
+
+<!-- END -->
+<section class="glass fade">
+  <h2>I Love You 💖</h2>
 </section>
 
 <!-- MUSIC -->
@@ -145,21 +158,18 @@ video.bg {
 <div class="music-btn" onclick="toggleMusic()">🎵</div>
 
 <script>
-// scroll
 function scrollDown() {
   document.getElementById("content").scrollIntoView({ behavior: "smooth" });
 }
 
-// music
 let music = document.getElementById("music");
 function toggleMusic() {
   if (music.paused) music.play();
   else music.pause();
 }
 
-// scroll animation
+// ANIMASI SCROLL
 const fades = document.querySelectorAll(".fade");
-
 window.addEventListener("scroll", () => {
   fades.forEach(el => {
     const top = el.getBoundingClientRect().top;
