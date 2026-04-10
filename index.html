@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday My Love ❤️</title>
+<title>Untuk Kamu ❤️</title>
 
 <style>
 * {
@@ -14,178 +14,165 @@
 }
 
 body {
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  background: black;
   color: white;
-  text-align: center;
   overflow-x: hidden;
 }
 
-/* Header */
-header {
+/* HALAMAN AWAL */
+.start {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+button {
+  padding: 15px 30px;
+  border: none;
+  background: #ff4d88;
+  color: white;
+  font-size: 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 0 20px #ff4d88;
+}
+
+/* HIDE */
+.hidden {
+  display: none;
+}
+
+/* STORY */
+.story {
+  padding: 40px 20px;
+  text-align: center;
+  animation: fadeIn 2s ease;
+}
+
+.story img {
+  width: 90%;
+  max-width: 350px;
+  border-radius: 20px;
+  margin: 20px 0;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: showUp 1.5s forwards;
+}
+
+.story img:nth-child(2) { animation-delay: 1s; }
+.story img:nth-child(3) { animation-delay: 2s; }
+.story img:nth-child(4) { animation-delay: 3s; }
+
+.story p {
+  margin-top: 20px;
+  line-height: 1.8;
+  opacity: 0;
+  animation: fadeText 3s forwards;
+  animation-delay: 4s;
+}
+
+/* SURPRISE */
+.surprise {
+  text-align: center;
   padding: 50px 20px;
 }
 
-header h1 {
-  font-size: 40px;
-  text-shadow: 0 0 20px rgba(255,255,255,0.8);
+.surprise h1 {
+  color: #ff4d88;
+  text-shadow: 0 0 20px #ff4d88;
 }
 
-header p {
-  margin-top: 10px;
-  font-size: 18px;
-}
-
-/* Album Grid */
-.album {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-  padding: 20px;
-}
-
-/* Foto */
-.photo {
-  position: relative;
-  overflow: hidden;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: 0.4s;
-}
-
-.photo img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  transition: 0.4s;
-}
-
-.photo:hover img {
-  transform: scale(1.1);
-  filter: brightness(70%);
-}
-
-/* Caption */
-.caption {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 10px;
-  background: rgba(0,0,0,0.5);
-  opacity: 0;
-  transition: 0.4s;
-}
-
-.photo:hover .caption {
-  opacity: 1;
-}
-
-/* Love Animation */
+/* LOVE EFFECT */
 .heart {
   position: fixed;
-  color: red;
-  font-size: 20px;
-  animation: float 5s linear infinite;
+  color: #ff4d88;
+  animation: float 6s linear infinite;
 }
 
 @keyframes float {
-  0% {
-    transform: translateY(100vh);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-10vh);
-    opacity: 0;
-  }
+  0% { transform: translateY(100vh); opacity: 1;}
+  100% { transform: translateY(-10vh); opacity: 0;}
 }
 
-/* Message */
-.message {
-  padding: 40px 20px;
+@keyframes showUp {
+  to { opacity: 1; transform: translateY(0);}
 }
 
-.message h2 {
-  margin-bottom: 15px;
+@keyframes fadeText {
+  to { opacity: 1;}
 }
 
-.message p {
-  max-width: 500px;
-  margin: auto;
-  line-height: 1.6;
-}
-
-/* Footer */
-footer {
-  padding: 20px;
-  font-size: 14px;
+@keyframes fadeIn {
+  from { opacity: 0;}
+  to { opacity: 1;}
 }
 </style>
-
 </head>
+
 <body>
 
-<header>
-  <h1>🎉 Happy Birthday Sayangku 💖</h1>
-  <p>Album Kenangan Kita</p>
-</header>
-
-<!-- Album -->
-<div class="album">
-
-  <div class="photo">
-    <img src="foto1.jpg">
-    <div class="caption">Senyummu yang aku suka 💕</div>
-  </div>
-
-  <div class="photo">
-    <img src="foto2.jpg">
-    <div class="caption">Momen indah kita ✨</div>
-  </div>
-
-  <div class="photo">
-    <img src="foto3.jpg">
-    <div class="caption">Cantik banget 😍</div>
-  </div>
-
-  <div class="photo">
-    <img src="foto4.jpg">
-    <div class="caption">Selalu bikin bahagia ❤️</div>
-  </div>
-
+<!-- HALAMAN AWAL -->
+<div class="start" id="start">
+  <h1>Hai Sayang 💖</h1>
+  <button onclick="mulai()">Klik Aku</button>
 </div>
 
-<!-- Pesan -->
-<div class="message">
-  <h2>Untuk Kamu 💌</h2>
+<!-- STORY -->
+<div class="story hidden" id="story">
+
+  <img src="foto1.jpg">
+  <img src="foto2.jpg">
+  <img src="foto3.jpg">
+
   <p>
-    Selamat ulang tahun ya sayangku 💖  
-    Semoga kamu selalu bahagia, sehat, dan semua impian kamu tercapai.  
-    Terima kasih sudah hadir di hidup aku dan jadi bagian terindah dalam setiap hariku.  
-    Aku sayang kamu selalu ❤️
+    Dari pertama aku kenal kamu...  
+    sampai sekarang...  
+    kamu selalu jadi alasan aku tersenyum 😊  
+
+    Semua momen sama kamu itu berharga banget buat aku...  
+    dan aku gak mau kehilangan itu semua 💔  
+
+    Hari ini bukan cuma ulang tahun kamu...  
+    tapi hari dimana dunia dikasih orang seindah kamu 💖  
   </p>
+
 </div>
 
-<footer>
-  Dibuat dengan cinta 💕 oleh pacarmu
-</footer>
+<!-- SURPRISE -->
+<div class="surprise hidden" id="surprise">
+  <h1>🎉 Happy Birthday Sayangku 🎂</h1>
+  <p>Aku sayang kamu... lebih dari yang kamu tau ❤️</p>
+</div>
 
-<!-- Musik (opsional) -->
-<audio autoplay loop>
+<!-- MUSIC -->
+<audio id="music" loop>
   <source src="lagu.mp3" type="audio/mp3">
 </audio>
 
-<!-- Love effect -->
 <script>
+function mulai() {
+  document.getElementById("start").classList.add("hidden");
+  document.getElementById("story").classList.remove("hidden");
+
+  document.getElementById("music").play();
+
+  setTimeout(() => {
+    document.getElementById("surprise").classList.remove("hidden");
+  }, 12000);
+}
+
+// LOVE EFFECT
 setInterval(() => {
   let heart = document.createElement("div");
   heart.className = "heart";
-  heart.innerHTML = "❤️";
+  heart.innerHTML = "❤";
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.fontSize = (10 + Math.random() * 20) + "px";
   document.body.appendChild(heart);
 
-  setTimeout(() => {
-    heart.remove();
-  }, 5000);
+  setTimeout(() => heart.remove(), 6000);
 }, 300);
 </script>
 
