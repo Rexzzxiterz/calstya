@@ -1,184 +1,60 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Aldevira 💖</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Aldevira</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  color: white;
-  overflow-x: hidden;
-}
-
-/* VIDEO BG */
-video.bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-
-/* GLASS */
-.glass {
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(12px);
-  padding: 30px;
-  margin: 20px;
-  border-radius: 20px;
-  text-align: center;
-}
-
-/* HERO */
-.hero {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 38px;
-  color: #ff4d88;
-}
-
-/* BUTTON */
-.btn {
-  margin-top: 20px;
-  padding: 10px 25px;
-  border: 1px solid #ff4d88;
-  border-radius: 25px;
-  cursor: pointer;
-}
-
-/* GALLERY */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
-  gap: 10px;
-}
-
-.gallery img {
-  width: 100%;
-  border-radius: 15px;
-}
-
-/* MUSIC */
-.music-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #ff4d88;
-  padding: 10px 15px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* ANIMASI */
-.fade {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: 1s;
-}
-
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-</style>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- BG VIDEO -->
-<video class="bg" autoplay muted loop>
-  <source src="bg.mp4" type="video/mp4">
-</video>
-
 <!-- HERO -->
 <section class="hero">
-  <div class="glass fade">
-    <h1>Happy Birthday 💖</h1>
-    <p>Untuk kamu, Aldevira Fitria Ermian</p>
-    <div class="btn" onclick="scrollDown()">Masuk</div>
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>Happy Birthday</h1>
+    <p>Aldevira Fitria Ermian</p>
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="glass fade" id="content">
-  <h2>Kenangan Kita</h2>
-  <div class="gallery">
-    <img src="foto1.jpg">
-    <img src="foto2.jpg">
-    <img src="foto3.jpg">
-    <img src="foto4.jpg">
-  </div>
-</section>
-
-<!-- PESAN -->
-<section class="glass fade">
-  <h2>Untuk Aldevira 💌</h2>
+<!-- STORY -->
+<section class="section fade">
+  <h2>Kenangan</h2>
   <p>
-    Selamat ulang tahun, Aldevira Fitria Ermian 💖  
-    Dari sekian banyak hal indah di dunia ini,  
-    kamu adalah yang paling aku syukuri.  
-
-    Terima kasih sudah hadir di hidup aku,  
-    dan selalu jadi alasan aku tersenyum setiap hari.  
-
-    Aku harap di hari spesial kamu ini,  
-    semua kebahagiaan datang ke kamu…  
-    dan aku masih jadi bagian dari itu ❤️
+    Ada banyak momen yang mungkin sederhana,
+    tapi jadi berarti karena kamu ada di dalamnya.
   </p>
 </section>
 
-<!-- END -->
-<section class="glass fade">
-  <h2>I Love You 💖</h2>
+<!-- GALLERY -->
+<section class="gallery">
+  <img src="assets/foto1.jpg" class="fade">
+  <img src="assets/foto2.jpg" class="fade">
+  <img src="assets/foto3.jpg" class="fade">
 </section>
 
+<!-- MESSAGE -->
+<section class="section fade">
+  <h2>Untuk Kamu</h2>
+  <p>
+    Selamat ulang tahun.  
+    Semoga hal-hal baik selalu datang ke hidup kamu.  
+    Dan semoga aku masih ada di setiap cerita itu.
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer class="fade">
+  <p>Made with care.</p>
+</footer>
+
 <!-- MUSIC -->
-<audio id="music" loop>
-  <source src="lagu.mp3" type="audio/mp3">
-</audio>
+<audio id="music" src="assets/lagu.mp3"></audio>
+<button id="musicBtn">Play Music</button>
 
-<div class="music-btn" onclick="toggleMusic()">🎵</div>
-
-<script>
-function scrollDown() {
-  document.getElementById("content").scrollIntoView({ behavior: "smooth" });
-}
-
-let music = document.getElementById("music");
-function toggleMusic() {
-  if (music.paused) music.play();
-  else music.pause();
-}
-
-// ANIMASI SCROLL
-const fades = document.querySelectorAll(".fade");
-window.addEventListener("scroll", () => {
-  fades.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      el.classList.add("show");
-    }
-  });
-});
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
