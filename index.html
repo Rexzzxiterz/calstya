@@ -14,12 +14,12 @@
 }
 
 body {
-  background: black;
+  background: #000;
   color: white;
   overflow-x: hidden;
 }
 
-/* HALAMAN AWAL */
+/* START */
 .start {
   height: 100vh;
   display: flex;
@@ -30,61 +30,74 @@ body {
 
 button {
   padding: 15px 30px;
-  border: none;
   background: #ff4d88;
+  border: none;
+  border-radius: 30px;
   color: white;
   font-size: 18px;
-  border-radius: 30px;
-  cursor: pointer;
   box-shadow: 0 0 20px #ff4d88;
+  cursor: pointer;
 }
 
-/* HIDE */
-.hidden {
-  display: none;
+.hidden { display: none; }
+
+/* VIDEO */
+.video {
+  text-align: center;
+  padding: 20px;
+}
+
+video {
+  width: 90%;
+  max-width: 400px;
+  border-radius: 20px;
+}
+
+/* CHAT */
+.chat {
+  padding: 20px;
+}
+
+.bubble {
+  max-width: 70%;
+  padding: 10px 15px;
+  border-radius: 15px;
+  margin: 10px;
+}
+
+.me {
+  background: #ff4d88;
+  margin-left: auto;
+}
+
+.her {
+  background: #333;
 }
 
 /* STORY */
 .story {
-  padding: 40px 20px;
   text-align: center;
-  animation: fadeIn 2s ease;
 }
 
 .story img {
-  width: 90%;
-  max-width: 350px;
-  border-radius: 20px;
-  margin: 20px 0;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: showUp 1.5s forwards;
+  width: 80%;
+  max-width: 300px;
+  border-radius: 15px;
+  margin: 15px;
 }
 
-.story img:nth-child(2) { animation-delay: 1s; }
-.story img:nth-child(3) { animation-delay: 2s; }
-.story img:nth-child(4) { animation-delay: 3s; }
-
-.story p {
-  margin-top: 20px;
-  line-height: 1.8;
-  opacity: 0;
-  animation: fadeText 3s forwards;
-  animation-delay: 4s;
-}
-
-/* SURPRISE */
-.surprise {
+/* ENDING */
+.ending {
   text-align: center;
-  padding: 50px 20px;
+  padding: 40px;
 }
 
-.surprise h1 {
+.ending h1 {
   color: #ff4d88;
   text-shadow: 0 0 20px #ff4d88;
 }
 
-/* LOVE EFFECT */
+/* LOVE */
 .heart {
   position: fixed;
   color: #ff4d88;
@@ -92,58 +105,45 @@ button {
 }
 
 @keyframes float {
-  0% { transform: translateY(100vh); opacity: 1;}
-  100% { transform: translateY(-10vh); opacity: 0;}
-}
-
-@keyframes showUp {
-  to { opacity: 1; transform: translateY(0);}
-}
-
-@keyframes fadeText {
-  to { opacity: 1;}
-}
-
-@keyframes fadeIn {
-  from { opacity: 0;}
-  to { opacity: 1;}
+  0% { transform: translateY(100vh);}
+  100% { transform: translateY(-10vh);}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HALAMAN AWAL -->
+<!-- START -->
 <div class="start" id="start">
   <h1>Hai Sayang 💖</h1>
   <button onclick="mulai()">Klik Aku</button>
 </div>
 
+<!-- VIDEO -->
+<div class="video hidden" id="video">
+  <video src="video.mp4" autoplay loop></video>
+</div>
+
+<!-- CHAT -->
+<div class="chat hidden" id="chat">
+  <div class="bubble me">Hai kamu ❤️</div>
+  <div class="bubble her">Kenapa? 😊</div>
+  <div class="bubble me">Aku cuma mau bilang...</div>
+  <div class="bubble me">Aku sayang banget sama kamu 💖</div>
+  <div class="bubble her">Aku juga sayang kamu 😭</div>
+</div>
+
 <!-- STORY -->
 <div class="story hidden" id="story">
-
   <img src="foto1.jpg">
   <img src="foto2.jpg">
   <img src="foto3.jpg">
-
-  <p>
-    Dari pertama aku kenal kamu...  
-    sampai sekarang...  
-    kamu selalu jadi alasan aku tersenyum 😊  
-
-    Semua momen sama kamu itu berharga banget buat aku...  
-    dan aku gak mau kehilangan itu semua 💔  
-
-    Hari ini bukan cuma ulang tahun kamu...  
-    tapi hari dimana dunia dikasih orang seindah kamu 💖  
-  </p>
-
 </div>
 
-<!-- SURPRISE -->
-<div class="surprise hidden" id="surprise">
-  <h1>🎉 Happy Birthday Sayangku 🎂</h1>
-  <p>Aku sayang kamu... lebih dari yang kamu tau ❤️</p>
+<!-- ENDING -->
+<div class="ending hidden" id="ending">
+  <h1>🎉 Happy Birthday 💖</h1>
+  <p>Aku janji akan selalu ada buat kamu… dalam keadaan apapun ❤️</p>
 </div>
 
 <!-- MUSIC -->
@@ -154,13 +154,20 @@ button {
 <script>
 function mulai() {
   document.getElementById("start").classList.add("hidden");
-  document.getElementById("story").classList.remove("hidden");
-
+  document.getElementById("video").classList.remove("hidden");
   document.getElementById("music").play();
 
   setTimeout(() => {
-    document.getElementById("surprise").classList.remove("hidden");
-  }, 12000);
+    document.getElementById("chat").classList.remove("hidden");
+  }, 5000);
+
+  setTimeout(() => {
+    document.getElementById("story").classList.remove("hidden");
+  }, 10000);
+
+  setTimeout(() => {
+    document.getElementById("ending").classList.remove("hidden");
+  }, 15000);
 }
 
 // LOVE EFFECT
