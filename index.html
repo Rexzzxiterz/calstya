@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Untuk Kamu 💖</title>
+<title>LDR Story 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
@@ -14,82 +14,92 @@
   --bg: linear-gradient(180deg, #fff0f5, #ffe4ec);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: #444;
-  overflow-x: hidden;
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  overflow-x:hidden;
+  color:#444;
 }
 
 /* HERO */
 .hero {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
 .hero h1 {
-  font-family: 'Playfair Display', serif;
-  color: var(--pink);
-  font-size: 42px;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  font-family:'Playfair Display',serif;
+  color:var(--pink);
 }
 
-/* SECTION */
-.section {
-  max-width: 800px;
-  margin: auto;
-  padding: 80px 20px;
-  text-align: center;
+/* MAP */
+.map {
+  position:relative;
+  height:300px;
+  margin:40px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.6);
+  backdrop-filter:blur(10px);
 }
 
-/* CARD */
-.card {
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(14px);
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+.point {
+  position:absolute;
+  width:12px;
+  height:12px;
+  background:var(--pink);
+  border-radius:50%;
 }
 
-/* IMAGE */
-img {
-  width: 100%;
-  border-radius: 20px;
+.line {
+  position:absolute;
+  height:2px;
+  background:var(--pink);
+  transform-origin:left;
 }
 
-/* LETTER */
-.letter p {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 1s;
-  margin-bottom: 15px;
+/* LABEL */
+.label {
+  position:absolute;
+  font-size:12px;
+  color:#666;
 }
 
-.letter p.show {
-  opacity: 1;
-  transform: translateY(0);
+/* CHAT */
+.chat {
+  padding:20px;
+}
+
+.bubble {
+  max-width:70%;
+  padding:10px;
+  margin:10px;
+  border-radius:15px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:0.5s;
+}
+
+.me {background:#ff8fb1;color:white;margin-left:auto;}
+.her {background:#eee;}
+
+.bubble.show {
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* PARTICLE */
 .particle {
-  position: fixed;
-  font-size: 14px;
-  animation: float 8s linear infinite;
-  opacity: 0.7;
+  position:fixed;
+  animation:float 8s linear infinite;
 }
 
 @keyframes float {
-  0% { transform: translateY(100vh);}
-  100% { transform: translateY(-10vh);}
+  0%{transform:translateY(100vh);}
+  100%{transform:translateY(-10vh);}
 }
 </style>
 </head>
@@ -98,49 +108,65 @@ img {
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Walaupun Jauh...<br>Aku Tetap Sayang Kamu 💖</h1>
+  <h1>Kita Jauh… Tapi Tetap Satu 💖</h1>
 </section>
 
-<!-- IMAGE -->
-<section class="section">
-  <div class="card">
-    <img src="https://picsum.photos/900/600">
-  </div>
-</section>
+<!-- MAP -->
+<div class="map">
+  <!-- titik kamu -->
+  <div class="point" style="top:60%; left:20%;"></div>
+  <div class="label" style="top:65%; left:20%;">Kamu</div>
 
-<!-- LETTER -->
-<section class="section">
-  <div class="card">
-    <h2 style="color:#ff8fb1;">Untuk Kamu 🌸</h2>
-    <div class="letter">
-      <p>Jarak ini memang gak mudah…</p>
-      <p>Tapi setiap hari aku tetap milih kamu.</p>
-      <p>Walaupun kita gak selalu bisa ketemu,</p>
-      <p>kamu tetap jadi rumah buat aku 🌙</p>
-      <p>Aku kangen… tapi aku juga bangga punya kamu 💖</p>
-    </div>
-  </div>
+  <!-- titik dia -->
+  <div class="point" style="top:30%; left:70%;"></div>
+  <div class="label" style="top:25%; left:70%;">Dia</div>
+
+  <!-- garis -->
+  <div class="line" id="line"></div>
+</div>
+
+<!-- CHAT -->
+<section class="chat">
+  <div class="bubble me">Aku kangen kamu 😔</div>
+  <div class="bubble her">Aku juga kangen banget…</div>
+  <div class="bubble me">Andai kita gak sejauh ini</div>
+  <div class="bubble her">Tapi aku tetap mau sama kamu 💖</div>
+  <div class="bubble me">Aku bakal tunggu kita ketemu nanti</div>
 </section>
 
 <script>
-// LETTER ANIMATION
-const ps = document.querySelectorAll(".letter p");
-ps.forEach((p,i)=>{
-  setTimeout(()=>p.classList.add("show"), i*1200);
+// GARIS MAP
+const line = document.getElementById("line");
+
+const x1 = 20, y1 = 60;
+const x2 = 70, y2 = 30;
+
+const length = Math.hypot(x2-x1, y2-y1);
+const angle = Math.atan2(y2-y1, x2-x1);
+
+line.style.width = length + "%";
+line.style.left = x1 + "%";
+line.style.top = y1 + "%";
+line.style.transform = `rotate(${angle}rad)`;
+
+// CHAT ANIMATION
+const bubbles = document.querySelectorAll(".bubble");
+bubbles.forEach((b,i)=>{
+  setTimeout(()=>b.classList.add("show"), i*1200);
 });
 
-// PARTICLE (BUNGA + BINTANG)
-const symbols = ["🌸","✨","💮","⭐"];
+// PARTICLE
+const icons = ["🌸","✨","💖","⭐"];
 
 setInterval(()=>{
-  let el = document.createElement("div");
-  el.className = "particle";
-  el.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
-  el.style.left = Math.random()*100+"vw";
-  el.style.fontSize = (12 + Math.random()*10)+"px";
-  document.body.appendChild(el);
+  let p = document.createElement("div");
+  p.className="particle";
+  p.innerHTML = icons[Math.floor(Math.random()*icons.length)];
+  p.style.left=Math.random()*100+"vw";
+  p.style.fontSize=(12+Math.random()*10)+"px";
+  document.body.appendChild(p);
 
-  setTimeout(()=>el.remove(),8000);
+  setTimeout(()=>p.remove(),8000);
 },400);
 </script>
 
