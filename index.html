@@ -11,7 +11,25 @@
 <style>
 :root {
   --pink: #ff8fb1;
-  --bg: linear-gradient(180deg, #fff0f5, #ffe4ec);
+  --bg-light: linear-gradient(180deg, #fff0f5, #ffe4ec);
+  --bg-dark: #0f0f14;
+  --text-light: #444;
+  --text-dark: #eee;
+}
+
+/* AUTO DARK MODE */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background: var(--bg-light);
+    color: var(--text-light);
+  }
 }
 
 * {
@@ -22,24 +40,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--bg);
   overflow-x: hidden;
-  color: #444;
-
-  /* bikin teks global lebih jelas */
-  text-shadow: 0 1px 3px rgba(0,0,0,0.08);
-}
-
-/* BACKGROUND GLOW */
-body::before {
-  content: "";
-  position: fixed;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, #ffc1d6, transparent);
-  top: -100px;
-  left: -100px;
-  filter: blur(120px);
 }
 
 /* HERO */
@@ -55,22 +56,15 @@ body::before {
   font-family: 'Playfair Display', serif;
   font-size: 48px;
   color: var(--pink);
-
-  /* biar tajam + elegan */
-  text-shadow: 0 4px 20px rgba(0,0,0,0.15);
-  -webkit-text-stroke: 0.5px rgba(255,255,255,0.5);
 }
 
 /* CARD */
 .card {
-  background: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.7);
   backdrop-filter: blur(14px);
   border-radius: 20px;
   padding: 30px;
   margin: 20px;
-
-  /* efek mahal */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 /* SECTION */
@@ -81,27 +75,34 @@ body::before {
   text-align: center;
 }
 
-/* IMAGE */
-img {
+/* IMAGE BLUR EFFECT */
+.image img {
   width: 100%;
   border-radius: 20px;
+  filter: blur(10px);
+  transition: 1.2s ease;
+}
+
+.image.show img {
+  filter: blur(0);
 }
 
 /* LETTER */
-.letter {
-  font-size: 18px;
-  line-height: 1.8;
-  white-space: pre-line;
-  min-height: 150px;
+.letter p {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1s;
+  margin-bottom: 15px;
+}
 
-  color: #333;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+.letter p.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* TITLE */
 h2 {
   color: var(--pink);
-  text-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 /* FADE */
@@ -115,22 +116,6 @@ h2 {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* LIGHT PARTICLE */
-.light {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  background: pink;
-  border-radius: 50%;
-  opacity: 0.6;
-  animation: float 8s linear infinite;
-}
-
-@keyframes float {
-  0% { transform: translateY(100vh);}
-  100% { transform: translateY(-10vh);}
-}
 </style>
 </head>
 
@@ -138,11 +123,11 @@ h2 {
 
 <!-- HERO -->
 <section class="hero fade">
-  <h1>Happy Birthday<br>Callstya Aldevira Fitria Ermian</h1>
+  <h1>Happy Birthday<br>Callstya Aldevira</h1>
 </section>
 
 <!-- IMAGE -->
-<section class="section fade">
+<section class="section fade image">
   <div class="card">
     <img src="https://picsum.photos/900/600">
   </div>
@@ -152,62 +137,47 @@ h2 {
 <section class="section fade">
   <div class="card">
     <h2>Untuk Kamu 💌</h2>
-    <p class="letter" id="text"></p>
+    <div class="letter" id="letter">
+      <p>Selamat ulang tahun, Callstya 💖</p>
+      <p>Aku gak tau harus mulai dari mana,</p>
+      <p>tapi yang pasti… aku bersyukur banget bisa kenal kamu.</p>
+      <p>Semoga hari kamu selalu dipenuhi hal-hal baik,</p>
+      <p>dan semoga aku masih ada di setiap cerita indah kamu 🌸</p>
+    </div>
   </div>
 </section>
 
 <script>
-// SCROLL FADE
-const items = document.querySelectorAll(".fade");
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add("show");
+// FADE SECTION
+const fades = document.querySelectorAll(".fade");
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("show");
   });
 });
-items.forEach(el => obs.observe(el));
+fades.forEach(el => observer.observe(el));
 
-// TYPING EFFECT
-const message = `Selamat ulang tahun, Callstya Aldevira 💖
+// IMAGE BLUR TRIGGER
+const imgSection = document.querySelector(".image");
+observer.observe(imgSection);
 
-Aku gak tau harus mulai dari mana,
-tapi yang pasti…
-aku bersyukur banget bisa kenal kamu.
+// LETTER PER PARAGRAF
+const paragraphs = document.querySelectorAll(".letter p");
 
-Semoga hari kamu selalu dipenuhi hal-hal baik,
-dan semoga aku masih ada
-di setiap cerita indah kamu ke depan 🌸`;
-
-let i = 0;
-function type() {
-  if (i < message.length) {
-    document.getElementById("text").innerHTML += message.charAt(i);
-    i++;
-    setTimeout(type, 40);
-  }
-}
-setTimeout(type, 1500);
-
-// LIGHT PARTICLE
-setInterval(() => {
-  let l = document.createElement("div");
-  l.className = "light";
-  l.style.left = Math.random() * 100 + "vw";
-  document.body.appendChild(l);
-
-  setTimeout(() => l.remove(), 8000);
-}, 500);
-
-// MUSIC FADE
-let audio = new Audio("lagu.mp3");
-audio.volume = 0;
-
-window.addEventListener("click", () => {
-  audio.play();
-  let fade = setInterval(() => {
-    if (audio.volume < 1) audio.volume += 0.05;
-    else clearInterval(fade);
-  }, 200);
+let delay = 0;
+const letterObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      paragraphs.forEach((p, i) => {
+        setTimeout(() => {
+          p.classList.add("show");
+        }, i * 800);
+      });
+    }
+  });
 });
+
+letterObserver.observe(document.querySelector(".letter"));
 </script>
 
 </body>
