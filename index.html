@@ -4,180 +4,200 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Callstya Aldevira Fitria Ermian 💖</title>
+<title>Callstya Aldevira 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --pink: #ff8fb1;
-  --bg-light: linear-gradient(180deg, #fff0f5, #ffe4ec);
-  --bg-dark: #0f0f14;
-  --text-light: #444;
-  --text-dark: #eee;
 }
 
-/* AUTO DARK MODE */
-@media (prefers-color-scheme: dark) {
-  body {
-    background: var(--bg-dark);
-    color: var(--text-dark);
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  body {
-    background: var(--bg-light);
-    color: var(--text-light);
-  }
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* GLOBAL */
 body {
+  margin: 0;
   font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+/* AUTO DARK */
+@media (prefers-color-scheme: dark) {
+  body { background:#0f0f14; color:#eee; }
+}
+@media (prefers-color-scheme: light) {
+  body { background:#fff0f5; color:#444; }
+}
+
+/* INTRO */
+.intro {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+  animation: fadeOut 3s forwards 2s;
+}
+
+@keyframes fadeOut {
+  to { opacity:0; visibility:hidden; }
 }
 
 /* HERO */
 .hero {
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
 .hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 48px;
+  font-size:48px;
   color: var(--pink);
 }
 
-/* CARD */
-.card {
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(14px);
-  border-radius: 20px;
-  padding: 30px;
-  margin: 20px;
+/* SLIDESHOW */
+.slideshow {
+  height: 80vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-/* SECTION */
-.section {
-  max-width: 800px;
-  margin: auto;
-  padding: 80px 20px;
-  text-align: center;
+.slideshow img {
+  width: 90%;
+  border-radius:20px;
+  opacity:0;
+  position:absolute;
+  transition: opacity 2s;
 }
 
-/* IMAGE BLUR EFFECT */
-.image img {
-  width: 100%;
-  border-radius: 20px;
-  filter: blur(10px);
-  transition: 1.2s ease;
+.slideshow img.active {
+  opacity:1;
 }
 
-.image.show img {
-  filter: blur(0);
+/* CHAT */
+.chat {
+  padding:40px 20px;
+}
+
+.bubble {
+  max-width:70%;
+  padding:10px;
+  border-radius:15px;
+  margin:10px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:0.5s;
+}
+
+.me { background:#ff8fb1; margin-left:auto; color:white;}
+.her { background:#eee; }
+
+.bubble.show {
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* LETTER */
+.section {
+  padding:80px 20px;
+  text-align:center;
+}
+
 .letter p {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 1s;
-  margin-bottom: 15px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:1s;
 }
 
 .letter p.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* TITLE */
-h2 {
-  color: var(--pink);
-}
-
-/* FADE */
-.fade {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: 1s;
-}
-
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
+  opacity:1;
+  transform:translateY(0);
 }
 </style>
 </head>
 
 <body>
 
+<!-- INTRO -->
+<div class="intro">Loading your story...</div>
+
 <!-- HERO -->
-<section class="hero fade">
-  <h1>Happy Birthday<br>Callstya Aldevira</h1>
+<section class="hero">
+  <h1>Happy Birthday 💖<br>Callstya Aldevira</h1>
 </section>
 
-<!-- IMAGE -->
-<section class="section fade image">
-  <div class="card">
-    <img src="https://picsum.photos/900/600">
-  </div>
+<!-- SLIDESHOW -->
+<section class="slideshow">
+  <img src="https://picsum.photos/900/600?1" class="slide active">
+  <img src="https://picsum.photos/900/600?2" class="slide">
+  <img src="https://picsum.photos/900/600?3" class="slide">
+</section>
+
+<!-- CHAT -->
+<section class="chat">
+  <div class="bubble me">Hai kamu 💖</div>
+  <div class="bubble her">Iya kenapa?</div>
+  <div class="bubble me">Aku cuma mau bilang sesuatu...</div>
+  <div class="bubble me">Aku sayang kamu 😭</div>
 </section>
 
 <!-- LETTER -->
-<section class="section fade">
-  <div class="card">
-    <h2>Untuk Kamu 💌</h2>
-    <div class="letter" id="letter">
-      <p>Selamat ulang tahun, Callstya 💖</p>
-      <p>Aku gak tau harus mulai dari mana,</p>
-      <p>tapi yang pasti… aku bersyukur banget bisa kenal kamu.</p>
-      <p>Semoga hari kamu selalu dipenuhi hal-hal baik,</p>
-      <p>dan semoga aku masih ada di setiap cerita indah kamu 🌸</p>
-    </div>
+<section class="section">
+  <h2>Untuk Kamu 💌</h2>
+  <div class="letter">
+    <p>Selamat ulang tahun, Callstya 💖</p>
+    <p>Aku bersyukur banget bisa kenal kamu.</p>
+    <p>Semoga kamu selalu bahagia.</p>
+    <p>Dan semoga aku tetap ada di hidup kamu 🌸</p>
   </div>
 </section>
 
 <script>
-// FADE SECTION
-const fades = document.querySelectorAll(".fade");
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add("show");
-  });
-});
-fades.forEach(el => observer.observe(el));
+// MUSIC
+let audio = new Audio("lagu.mp3");
+audio.volume = 0;
 
-// IMAGE BLUR TRIGGER
-const imgSection = document.querySelector(".image");
-observer.observe(imgSection);
-
-// LETTER PER PARAGRAF
-const paragraphs = document.querySelectorAll(".letter p");
-
-let delay = 0;
-const letterObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      paragraphs.forEach((p, i) => {
-        setTimeout(() => {
-          p.classList.add("show");
-        }, i * 800);
-      });
-    }
-  });
+window.addEventListener("click", () => {
+  audio.play();
+  let fade = setInterval(()=>{
+    if(audio.volume<1) audio.volume+=0.05;
+    else clearInterval(fade);
+  },200);
 });
 
-letterObserver.observe(document.querySelector(".letter"));
+// PAUSE KALO PINDAH TAB
+document.addEventListener("visibilitychange",()=>{
+  if(document.hidden) audio.pause();
+  else audio.play();
+});
+
+// SLIDESHOW
+let slides = document.querySelectorAll(".slide");
+let i = 0;
+
+setInterval(()=>{
+  slides[i].classList.remove("active");
+  i = (i+1)%slides.length;
+  slides[i].classList.add("active");
+},4000);
+
+// CHAT ANIMATION
+let bubbles = document.querySelectorAll(".bubble");
+bubbles.forEach((b,i)=>{
+  setTimeout(()=>b.classList.add("show"), i*1000);
+});
+
+// LETTER ANIMATION
+let ps = document.querySelectorAll(".letter p");
+ps.forEach((p,i)=>{
+  setTimeout(()=>p.classList.add("show"), i*1200);
+});
 </script>
 
 </body>
