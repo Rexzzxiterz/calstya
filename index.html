@@ -4,200 +4,144 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Callstya Aldevira 💖</title>
+<title>Untuk Kamu 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --pink: #ff8fb1;
+  --bg: linear-gradient(180deg, #fff0f5, #ffe4ec);
 }
 
-/* GLOBAL */
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'Inter', sans-serif;
-  transition: 0.5s;
-}
-
-/* AUTO DARK */
-@media (prefers-color-scheme: dark) {
-  body { background:#0f0f14; color:#eee; }
-}
-@media (prefers-color-scheme: light) {
-  body { background:#fff0f5; color:#444; }
-}
-
-/* INTRO */
-.intro {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: black;
-  color: white;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:999;
-  animation: fadeOut 3s forwards 2s;
-}
-
-@keyframes fadeOut {
-  to { opacity:0; visibility:hidden; }
+  background: var(--bg);
+  color: #444;
+  overflow-x: hidden;
 }
 
 /* HERO */
 .hero {
   height: 100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .hero h1 {
-  font-size:48px;
+  font-family: 'Playfair Display', serif;
   color: var(--pink);
+  font-size: 42px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
-/* SLIDESHOW */
-.slideshow {
-  height: 80vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+/* SECTION */
+.section {
+  max-width: 800px;
+  margin: auto;
+  padding: 80px 20px;
+  text-align: center;
 }
 
-.slideshow img {
-  width: 90%;
-  border-radius:20px;
-  opacity:0;
-  position:absolute;
-  transition: opacity 2s;
+/* CARD */
+.card {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-.slideshow img.active {
-  opacity:1;
-}
-
-/* CHAT */
-.chat {
-  padding:40px 20px;
-}
-
-.bubble {
-  max-width:70%;
-  padding:10px;
-  border-radius:15px;
-  margin:10px;
-  opacity:0;
-  transform:translateY(20px);
-  transition:0.5s;
-}
-
-.me { background:#ff8fb1; margin-left:auto; color:white;}
-.her { background:#eee; }
-
-.bubble.show {
-  opacity:1;
-  transform:translateY(0);
+/* IMAGE */
+img {
+  width: 100%;
+  border-radius: 20px;
 }
 
 /* LETTER */
-.section {
-  padding:80px 20px;
-  text-align:center;
-}
-
 .letter p {
-  opacity:0;
-  transform:translateY(20px);
-  transition:1s;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1s;
+  margin-bottom: 15px;
 }
 
 .letter p.show {
-  opacity:1;
-  transform:translateY(0);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* PARTICLE */
+.particle {
+  position: fixed;
+  font-size: 14px;
+  animation: float 8s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh);}
+  100% { transform: translateY(-10vh);}
 }
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
-<div class="intro">Loading your story...</div>
-
 <!-- HERO -->
 <section class="hero">
-  <h1>Happy Birthday 💖<br>Callstya Aldevira</h1>
+  <h1>Walaupun Jauh...<br>Aku Tetap Sayang Kamu 💖</h1>
 </section>
 
-<!-- SLIDESHOW -->
-<section class="slideshow">
-  <img src="https://picsum.photos/900/600?1" class="slide active">
-  <img src="https://picsum.photos/900/600?2" class="slide">
-  <img src="https://picsum.photos/900/600?3" class="slide">
-</section>
-
-<!-- CHAT -->
-<section class="chat">
-  <div class="bubble me">Hai kamu 💖</div>
-  <div class="bubble her">Iya kenapa?</div>
-  <div class="bubble me">Aku cuma mau bilang sesuatu...</div>
-  <div class="bubble me">Aku sayang kamu 😭</div>
+<!-- IMAGE -->
+<section class="section">
+  <div class="card">
+    <img src="https://picsum.photos/900/600">
+  </div>
 </section>
 
 <!-- LETTER -->
 <section class="section">
-  <h2>Untuk Kamu 💌</h2>
-  <div class="letter">
-    <p>Selamat ulang tahun, Callstya 💖</p>
-    <p>Aku bersyukur banget bisa kenal kamu.</p>
-    <p>Semoga kamu selalu bahagia.</p>
-    <p>Dan semoga aku tetap ada di hidup kamu 🌸</p>
+  <div class="card">
+    <h2 style="color:#ff8fb1;">Untuk Kamu 🌸</h2>
+    <div class="letter">
+      <p>Jarak ini memang gak mudah…</p>
+      <p>Tapi setiap hari aku tetap milih kamu.</p>
+      <p>Walaupun kita gak selalu bisa ketemu,</p>
+      <p>kamu tetap jadi rumah buat aku 🌙</p>
+      <p>Aku kangen… tapi aku juga bangga punya kamu 💖</p>
+    </div>
   </div>
 </section>
 
 <script>
-// MUSIC
-let audio = new Audio("lagu.mp3");
-audio.volume = 0;
-
-window.addEventListener("click", () => {
-  audio.play();
-  let fade = setInterval(()=>{
-    if(audio.volume<1) audio.volume+=0.05;
-    else clearInterval(fade);
-  },200);
-});
-
-// PAUSE KALO PINDAH TAB
-document.addEventListener("visibilitychange",()=>{
-  if(document.hidden) audio.pause();
-  else audio.play();
-});
-
-// SLIDESHOW
-let slides = document.querySelectorAll(".slide");
-let i = 0;
-
-setInterval(()=>{
-  slides[i].classList.remove("active");
-  i = (i+1)%slides.length;
-  slides[i].classList.add("active");
-},4000);
-
-// CHAT ANIMATION
-let bubbles = document.querySelectorAll(".bubble");
-bubbles.forEach((b,i)=>{
-  setTimeout(()=>b.classList.add("show"), i*1000);
-});
-
 // LETTER ANIMATION
-let ps = document.querySelectorAll(".letter p");
+const ps = document.querySelectorAll(".letter p");
 ps.forEach((p,i)=>{
   setTimeout(()=>p.classList.add("show"), i*1200);
 });
+
+// PARTICLE (BUNGA + BINTANG)
+const symbols = ["🌸","✨","💮","⭐"];
+
+setInterval(()=>{
+  let el = document.createElement("div");
+  el.className = "particle";
+  el.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
+  el.style.left = Math.random()*100+"vw";
+  el.style.fontSize = (12 + Math.random()*10)+"px";
+  document.body.appendChild(el);
+
+  setTimeout(()=>el.remove(),8000);
+},400);
 </script>
 
 </body>
