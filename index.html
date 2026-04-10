@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday My Love</title>
+<title>For My Love 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
@@ -16,9 +16,28 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at top, #1a1a2e, #000);
   color: white;
-  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* BACKGROUND VIDEO */
+video.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* GLASS */
+.glass {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  margin: 20px;
+  border-radius: 20px;
 }
 
 /* HERO */
@@ -33,52 +52,16 @@ body {
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 42px;
+  font-size: 40px;
   color: #ff4d88;
-  text-shadow: 0 0 25px rgba(255,77,136,0.7);
-}
-
-.hero p {
-  margin-top: 10px;
-  opacity: 0.7;
 }
 
 .btn {
-  margin-top: 30px;
-  padding: 12px 25px;
+  margin-top: 20px;
+  padding: 10px 25px;
   border: 1px solid #ff4d88;
-  border-radius: 30px;
-  color: white;
+  border-radius: 25px;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #ff4d88;
-  box-shadow: 0 0 20px #ff4d88;
-}
-
-/* SLIDESHOW */
-.slideshow {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.slide img {
-  width: 90%;
-  max-width: 400px;
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(255,77,136,0.3);
-}
-
-/* QUOTE */
-.quote {
-  padding: 60px 20px;
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  line-height: 1.6;
-  opacity: 0.9;
 }
 
 /* GALLERY */
@@ -86,108 +69,105 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
   gap: 10px;
-  padding: 20px;
 }
 
 .gallery img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
   border-radius: 15px;
-  transition: 0.4s;
 }
 
-.gallery img:hover {
-  transform: scale(1.05);
-  filter: brightness(70%);
-}
-
-/* ENDING */
-.ending {
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.ending h2 {
-  font-family: 'Playfair Display', serif;
-  color: #ff4d88;
-  margin-bottom: 10px;
-}
-
-/* HEART */
-.heart {
+/* MUSIC BUTTON */
+.music-btn {
   position: fixed;
-  color: #ff4d88;
-  animation: float 6s linear infinite;
+  bottom: 20px;
+  right: 20px;
+  background: #ff4d88;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-@keyframes float {
-  0% { transform: translateY(100vh);}
-  100% { transform: translateY(-10vh);}
+/* ANIMATION */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 1s;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
 </head>
 
 <body>
 
+<!-- VIDEO BACKGROUND -->
+<video class="bg" autoplay muted loop>
+  <source src="bg.mp4" type="video/mp4">
+</video>
+
 <!-- HERO -->
 <section class="hero">
-  <h1>Happy Birthday My Love 💖</h1>
-  <p>Sebuah cerita kecil untuk kamu</p>
-  <div class="btn" onclick="scrollToContent()">Mulai</div>
+  <div class="glass fade">
+    <h1>Happy Birthday 💖</h1>
+    <p>Untuk kamu yang paling spesial</p>
+    <div class="btn" onclick="scrollDown()">Masuk</div>
+  </div>
 </section>
 
-<!-- SLIDESHOW -->
-<section class="slideshow" id="content">
-  <div class="slide"><img src="foto1.jpg"></div>
+<!-- CONTENT -->
+<section class="glass fade" id="content">
+  <h2>Kenangan Kita</h2>
+  <div class="gallery">
+    <img src="foto1.jpg">
+    <img src="foto2.jpg">
+    <img src="foto3.jpg">
+    <img src="foto4.jpg">
+  </div>
 </section>
 
-<!-- QUOTE -->
-<section class="quote">
-  "Di antara banyak hal indah di dunia ini,  
-  kamu adalah yang paling aku syukuri."
-</section>
-
-<!-- GALLERY -->
-<section class="gallery">
-  <img src="foto2.jpg">
-  <img src="foto3.jpg">
-  <img src="foto4.jpg">
-  <img src="foto5.jpg">
-</section>
-
-<!-- ENDING -->
-<section class="ending">
-  <h2>Untuk Kamu</h2>
+<section class="glass fade">
+  <h2>Pesan Untuk Kamu</h2>
   <p>
-    Selamat ulang tahun.  
-    Semoga semua hal baik selalu datang ke hidup kamu.  
-    Dan semoga aku tetap jadi bagian dari kebahagiaan itu. ❤️
+    Selamat ulang tahun 💖  
+    Terima kasih sudah jadi bagian dari hidup aku.  
+    Kamu bukan cuma spesial… kamu segalanya buat aku.
   </p>
 </section>
 
 <!-- MUSIC -->
-<audio autoplay loop>
+<audio id="music" loop>
   <source src="lagu.mp3" type="audio/mp3">
 </audio>
 
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
+
 <script>
 // scroll
-function scrollToContent() {
+function scrollDown() {
   document.getElementById("content").scrollIntoView({ behavior: "smooth" });
 }
 
-// heart effect
-setInterval(() => {
-  let heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "❤";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (10 + Math.random() * 20) + "px";
-  document.body.appendChild(heart);
+// music
+let music = document.getElementById("music");
+function toggleMusic() {
+  if (music.paused) music.play();
+  else music.pause();
+}
 
-  setTimeout(() => heart.remove(), 6000);
-}, 400);
+// scroll animation
+const fades = document.querySelectorAll(".fade");
+
+window.addEventListener("scroll", () => {
+  fades.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add("show");
+    }
+  });
+});
 </script>
 
 </body>
