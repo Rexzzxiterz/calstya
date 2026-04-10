@@ -1,39 +1,148 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Aldevira</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aldevira</title>
 
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0b0b0f;
+  --card: rgba(255,255,255,0.05);
+  --accent: #ff4d88;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: #eee;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.hero span {
+  color: var(--accent);
+}
+
+/* SECTION */
+.section {
+  max-width: 900px;
+  margin: auto;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+/* GRID GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 15px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* TEXT */
+h2 {
+  margin-bottom: 10px;
+}
+
+p {
+  opacity: 0.7;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.5;
+}
+
+/* BUTTON */
+.btn {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #444;
+  cursor: pointer;
+}
+
+/* ANIMASI */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.8s;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
 
 <body>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="overlay"></div>
-  <div class="hero-content">
-    <h1>Happy Birthday</h1>
-    <p>Aldevira Fitria Ermian</p>
+<section class="hero fade">
+  <div>
+    <h1>Happy Birthday <br><span>Aldevira</span></h1>
+    <div class="btn" onclick="scrollToSection()">Scroll</div>
   </div>
 </section>
 
 <!-- STORY -->
-<section class="section fade">
+<section class="section fade" id="main">
   <h2>Kenangan</h2>
   <p>
     Ada banyak momen yang mungkin sederhana,
-    tapi jadi berarti karena kamu ada di dalamnya.
+    tapi semuanya jadi berarti karena kamu ada di dalamnya.
   </p>
 </section>
 
 <!-- GALLERY -->
-<section class="gallery">
-  <img src="assets/foto1.jpg" class="fade">
-  <img src="assets/foto2.jpg" class="fade">
-  <img src="assets/foto3.jpg" class="fade">
+<section class="section">
+  <div class="gallery">
+    <div class="card"><img src="https://picsum.photos/500/600?1"></div>
+    <div class="card"><img src="https://picsum.photos/500/600?2"></div>
+    <div class="card"><img src="https://picsum.photos/500/600?3"></div>
+  </div>
 </section>
 
 <!-- MESSAGE -->
@@ -41,20 +150,34 @@
   <h2>Untuk Kamu</h2>
   <p>
     Selamat ulang tahun.  
-    Semoga hal-hal baik selalu datang ke hidup kamu.  
+    Semoga semua hal baik datang ke hidup kamu.  
     Dan semoga aku masih ada di setiap cerita itu.
   </p>
 </section>
 
-<!-- FOOTER -->
 <footer class="fade">
-  <p>Made with care.</p>
+  Made with intention.
 </footer>
 
-<!-- MUSIC -->
-<audio id="music" src="assets/lagu.mp3"></audio>
-<button id="musicBtn">Play Music</button>
+<script>
+// SCROLL
+function scrollToSection() {
+  document.getElementById("main").scrollIntoView({behavior:"smooth"});
+}
 
-<script src="script.js"></script>
+// ANIMASI
+const items = document.querySelectorAll(".fade");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+items.forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
