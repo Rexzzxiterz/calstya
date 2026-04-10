@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pekalongan ❤️ Medan</title>
+<title>Happy birthday 🎂🎈🎉🥳</title>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
 
@@ -55,7 +55,7 @@ body { margin:0; font-family:sans-serif; }
 
 <body>
 
-<div class="title">Pekalongan ❤️ Medan — Jauh Tapi Tetap Kita 💖</div>
+<div class="title">Pekalongan - Medan ( Jauh Tapi Tetap Di Hati )</div>
 <div class="distance" id="distance">Menghitung jarak...</div>
 
 <div id="map"></div>
@@ -73,8 +73,8 @@ const map = L.map('map').setView([0,105],5);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
 // MARKER
-L.marker(pekalongan).addTo(map).bindPopup("Aku di Pekalongan 💖");
-L.marker(medan).addTo(map).bindPopup("Kamu di Medan 🌸");
+L.marker(pekalongan).addTo(map).bindPopup("Pekalongan");
+L.marker(medan).addTo(map).bindPopup("Medan");
 
 // GARIS PUTUS (ANIMASI)
 let dashOffset = 0;
