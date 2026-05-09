@@ -28,7 +28,7 @@
       position: fixed;
       top: -10px;
       color: #ff4da6;
-      animation: fall linear forwards;
+      animation: fall 10s linear forwards;
       z-index: 1;
       pointer-events: none;
     }
@@ -54,7 +54,7 @@
     }
 
     .fade-up {
-      animation: fadeUp 1.5s ease;
+      animation: fadeUp 2.5s ease;
     }
 
     @keyframes fadeUp {
@@ -73,7 +73,7 @@
       white-space: nowrap;
       border-right: 3px solid white;
       width: 0;
-      animation: typing 5s steps(40, end) forwards, blink .8s infinite;
+      animation: typing 8s steps(40, end) forwards, blink 1.2s infinite;
     }
 
     @keyframes typing {
@@ -200,7 +200,7 @@
       }, 7000);
     }
 
-    setInterval(createLove, 250);
+    setInterval(createLove, 700);
   </script>
 
 </body>
