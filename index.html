@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pembayaran WiFi</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gradient-to-br from-slate-900 via-blue-900 to-black min-h-screen p-3 sm:p-6 text-white overflow-x-hidden">
 
 <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
@@ -13,72 +15,183 @@
 <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 w-full">
 
 <div class="text-center mb-6">
-<h1 class="text-3xl sm:text-4xl font-bold text-cyan-400">Bayar WiFi</h1>
-<p class="text-gray-300 mt-2">Pembayaran tagihan internet rumah</p>
+<h1 class="text-3xl sm:text-4xl font-bold text-cyan-400">
+Bayar WiFi
+</h1>
+
+<p class="text-gray-300 mt-2">
+Pembayaran tagihan internet rumah
+</p>
 </div>
 
 <div class="bg-black/30 rounded-2xl p-6 mb-6 border border-cyan-400/30 text-center">
-<p class="text-gray-300 text-sm">Total Tagihan</p>
-<h2 class="text-4xl sm:text-5xl font-extrabold text-green-400 mt-2">Rp280.000</h2>
+
+<p class="text-gray-300 text-sm">
+Total Tagihan
+</p>
+
+<h2 class="text-4xl sm:text-5xl font-extrabold text-green-400 mt-2">
+Rp280.000
+</h2>
+
 </div>
 
 <div class="space-y-4 mb-5">
+
 <div>
-<label class="text-sm text-gray-300">Nama Pembayar</label>
-<input id="nama" type="text" placeholder="Masukkan nama" class="w-full mt-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 outline-none" />
+<label class="text-sm text-gray-300">
+Nama Pembayar
+</label>
+
+<input
+id="nama"
+type="text"
+placeholder="Masukkan nama"
+
+class="w-full mt-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 outline-none"
+/>
+
 </div>
+
 </div>
 
 <div class="bg-black/30 border border-cyan-400/30 rounded-2xl p-4 mb-4">
-<h3 class="text-xl font-bold text-cyan-300 mb-3">Metode Pembayaran</h3>
+
+<h3 class="text-xl font-bold text-cyan-300 mb-3">
+Metode Pembayaran
+</h3>
 
 <div class="flex flex-col sm:flex-row gap-3 mb-4">
-<button onclick="showPayment('qris')" class="w-full bg-green-500 hover:bg-green-400 py-3 rounded-xl font-bold">
+
+<button
+onclick="showPayment('qris')"
+class="w-full bg-green-500 hover:bg-green-400 py-3 rounded-xl font-bold">
+
 QRIS
+
 </button>
 
-<button onclick="showPayment('dana')" class="w-full bg-blue-500 hover:bg-blue-400 py-3 rounded-xl font-bold">
+<button
+onclick="showPayment('dana')"
+class="w-full bg-blue-500 hover:bg-blue-400 py-3 rounded-xl font-bold">
+
 DANA
+
 </button>
+
 </div>
 
-<div id="qrisBox" class="hidden bg-black/40 rounded-2xl border border-green-400/20 p-4 text-center">
-<p class="text-green-400 font-semibold mb-3">Scan QRIS Berikut</p>
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=PembayaranWifi280000" class="mx-auto rounded-xl border border-white/20 w-full max-w-[220px]" />
+<div
+id="qrisBox"
+class="hidden bg-black/40 rounded-2xl border border-green-400/20 p-4 text-center">
+
+<p class="text-green-400 font-semibold mb-3">
+Scan QRIS Berikut
+</p>
+
+<img
+src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=PembayaranWifi280000"
+
+class="mx-auto rounded-xl border border-white/20 w-full max-w-[220px]"
+/>
+
 </div>
 
-<div id="danaBox" class="hidden bg-black/40 rounded-2xl border border-blue-400/20 p-4 text-center">
-<p class="text-blue-400 font-semibold mb-2">Nomor DANA</p>
-<h2 class="text-2xl sm:text-3xl font-bold text-white">08xxxxxxxxxx</h2>
+<div
+id="danaBox"
+class="hidden bg-black/40 rounded-2xl border border-blue-400/20 p-4 text-center">
+
+<p class="text-blue-400 font-semibold mb-2">
+Nomor DANA
+</p>
+
+<h2 class="text-2xl sm:text-3xl font-bold text-white">
+08xxxxxxxxxx
+</h2>
+
 </div>
+
 </div>
 
 <div class="mb-5">
-<label class="text-sm text-gray-300">Upload Bukti Transfer</label>
-<input id="bukti" type="file" class="w-full mt-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-gray-300" />
+
+<label class="text-sm text-gray-300">
+Upload Bukti Transfer
+</label>
+
+<input
+id="bukti"
+type="file"
+
+class="w-full mt-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-gray-300"
+/>
+
 </div>
 
-<button onclick="bayarWifi()" class="w-full bg-cyan-500 hover:bg-cyan-400 transition-all duration-300 py-4 rounded-2xl font-bold text-base sm:text-lg shadow-lg shadow-cyan-500/40">
+<button
+onclick="bayarWifi()"
+
+class="w-full bg-cyan-500 hover:bg-cyan-400 transition-all duration-300 py-4 rounded-2xl font-bold text-base sm:text-lg shadow-lg shadow-cyan-500/40">
+
 Kirim Pembayaran
+
 </button>
 
-<div id="notif" class="hidden mt-6 bg-yellow-500/20 border border-yellow-400 text-yellow-300 py-3 rounded-xl text-center">
+<div
+id="notif"
+
+class="hidden mt-6 bg-yellow-500/20 border border-yellow-400 text-yellow-300 py-3 rounded-xl text-center">
+
 Pembayaran berhasil dikirim ⏳
+
 </div>
 
 </div>
 
 <div class="space-y-6 w-full">
+
 <div class="bg-white/10 backdrop-blur-xl border border-cyan-400/20 rounded-3xl shadow-2xl p-4 sm:p-6 w-full">
-<h2 class="text-2xl font-bold text-cyan-300 mb-4">Status Pembayaran</h2>
+
+<h2 class="text-2xl font-bold text-cyan-300 mb-4">
+Status Pembayaran
+</h2>
+
 <div id="pendingList" class="space-y-3"></div>
+
 </div>
+
 </div>
 
 </div>
 
-<script>
-function showPayment(type) {
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+addDoc,
+onSnapshot
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCiYGWwcKJRMpDADFkndDv-nLjLrjYgLJM",
+  authDomain: "bayar-wifi.firebaseapp.com",
+  projectId: "bayar-wifi",
+  storageBucket: "bayar-wifi.firebasestorage.app",
+  messagingSenderId: "952918479641",
+  appId: "1:952918479641:web:052c17a861b2cf4c00ab88",
+  measurementId: "G-EP72661H5Z"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.showPayment = function(type) {
+
 const qrisBox = document.getElementById('qrisBox');
 const danaBox = document.getElementById('danaBox');
 
@@ -90,80 +203,139 @@ qrisBox.classList.remove('hidden');
 } else {
 danaBox.classList.remove('hidden');
 }
+
 }
 
-function bayarWifi() {
-const nama = document.getElementById('nama').value;
-const metode = document.getElementById('qrisBox').classList.contains('hidden') ? 'DANA' : 'QRIS';
-const bukti = document.getElementById('bukti').files[0];
+window.bayarWifi = async function() {
+
+const nama =
+document.getElementById('nama').value;
+
+const metode =
+document.getElementById('qrisBox')
+.classList.contains('hidden')
+? 'DANA'
+: 'QRIS';
+
+const bukti =
+document.getElementById('bukti').files[0];
 
 if(!nama || !bukti) {
 alert('Isi nama dan upload bukti transfer');
 return;
 }
 
-const sekarang = new Date();
-
-const paymentData = {
-nama,
-metode,
-hari: sekarang.toLocaleDateString('id-ID', { weekday: 'long' }),
-tanggal: sekarang.toLocaleDateString('id-ID'),
-jam: sekarang.toLocaleTimeString('id-ID'),
-status: 'PENDING'
-};
-
 const reader = new FileReader();
 
-reader.onload = function(e) {
-paymentData.bukti = e.target.result;
+reader.onload = async function(e) {
 
-const oldData = JSON.parse(localStorage.getItem('wifiPayments')) || [];
-oldData.push(paymentData);
-localStorage.setItem('wifiPayments', JSON.stringify(oldData));
+const sekarang = new Date();
 
-loadStatus();
+await addDoc(collection(db, "payments"), {
 
-document.getElementById('notif').classList.remove('hidden');
-}
+nama,
+metode,
+
+hari: sekarang.toLocaleDateString('id-ID', {
+weekday: 'long'
+}),
+
+tanggal: sekarang.toLocaleDateString('id-ID'),
+
+jam: sekarang.toLocaleTimeString('id-ID'),
+
+status: "PENDING",
+
+bukti: e.target.result
+
+});
+
+document
+.getElementById('notif')
+.classList.remove('hidden');
+
+};
 
 reader.readAsDataURL(bukti);
+
 }
 
-function loadStatus() {
-const pendingList = document.getElementById('pendingList');
+const pendingList =
+document.getElementById('pendingList');
+
+onSnapshot(collection(db, "payments"), (snapshot) => {
+
 pendingList.innerHTML = '';
 
-const data = JSON.parse(localStorage.getItem('wifiPayments')) || [];
+snapshot.forEach((doc) => {
 
-data.forEach(payment => {
+const payment = doc.data();
+
 const item = document.createElement('div');
 
-item.className = payment.status === 'SUCCESS'
+item.className =
+payment.status === 'SUCCESS'
 ? 'bg-black/30 rounded-xl p-4 border border-green-400/20'
 : 'bg-black/30 rounded-xl p-4 border border-yellow-400/20';
 
 item.innerHTML = `
+
 <div class="flex justify-between items-center mb-2 flex-wrap gap-2">
-<h3 class="font-bold text-white">${payment.nama}</h3>
-<span class="${payment.status === 'SUCCESS' ? 'bg-green-500/20 text-green-300' : 'bg-yellow-500/20 text-yellow-300'} px-3 py-1 rounded-full text-xs">${payment.status}</span>
+
+<h3 class="font-bold text-white">
+${payment.nama}
+</h3>
+
+<span class="${
+payment.status === 'SUCCESS'
+? 'bg-green-500/20 text-green-300'
+: 'bg-yellow-500/20 text-yellow-300'
+} px-3 py-1 rounded-full text-xs">
+
+${payment.status}
+
+</span>
+
 </div>
 
-<p class="text-gray-300 text-sm">Metode Pembayaran: ${payment.metode}</p>
-<p class="text-gray-400 text-sm">Hari: ${payment.hari}</p>
-<p class="text-gray-400 text-sm">Tanggal: ${payment.tanggal}</p>
-<p class="text-gray-400 text-sm">Waktu: ${payment.jam}</p>
-
-<p class="${payment.status === 'SUCCESS' ? 'text-green-300' : 'text-yellow-300'} text-sm mt-3 font-semibold">
-${payment.status === 'SUCCESS' ? 'Pembayaran berhasil dikonfirmasi admin ✅' : 'Menunggu konfirmasi admin WiFi ⏳'}
+<p class="text-gray-300 text-sm">
+Metode Pembayaran: ${payment.metode}
 </p>
+
+<p class="text-gray-400 text-sm">
+Hari: ${payment.hari}
+</p>
+
+<p class="text-gray-400 text-sm">
+Tanggal: ${payment.tanggal}
+</p>
+
+<p class="text-gray-400 text-sm">
+Waktu: ${payment.jam}
+</p>
+
+<p class="${
+payment.status === 'SUCCESS'
+? 'text-green-300'
+: 'text-yellow-300'
+} text-sm mt-3 font-semibold">
+
+${
+payment.status === 'SUCCESS'
+? 'Pembayaran berhasil dikonfirmasi admin ✅'
+: 'Menunggu konfirmasi admin WiFi ⏳'
+}
+
+</p>
+
 `;
 
 pendingList.prepend(item);
-});
-}
 
-window.onload = loadStatus;
+});
+
+});
+
 </script>
 
 </body>
