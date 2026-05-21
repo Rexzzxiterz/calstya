@@ -3,189 +3,168 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pembayaran WiFi Rumah</title>
+  <title>Pembayaran WiFi</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-br from-slate-900 via-blue-900 to-black min-h-screen p-3 sm:p-6 text-white overflow-x-hidden">
 
-  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+<div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
 
-    <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 w-full">
-      <div class="text-center mb-6">
-        <h1 class="text-3xl sm:text-4xl font-bold text-cyan-400 break-words">Bayar WiFi</h1>
-        <p class="text-gray-300 mt-2">Pembayaran tagihan internet rumah</p>
-      </div>
+<div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 w-full">
 
-      <div class="bg-black/30 rounded-2xl p-6 mb-6 border border-cyan-400/30 text-center">
-        <p class="text-gray-300 text-sm">Total Tagihan</p>
-        <h2 class="text-4xl sm:text-5xl font-extrabold text-green-400 mt-2 break-words">Rp280.000</h2>
-        <p class="text-gray-400 mt-2">Jatuh tempo bulan ini</p>
-      </div>
+<div class="text-center mb-6">
+<h1 class="text-3xl sm:text-4xl font-bold text-cyan-400">Bayar WiFi</h1>
+<p class="text-gray-300 mt-2">Pembayaran tagihan internet rumah</p>
+</div>
 
-      <div class="space-y-4 text-left mb-6">
-        <div>
-          <label class="text-sm text-gray-300">Nama Pembayar</label>
-          <input id="nama" type="text" placeholder="Masukkan nama" class="w-full mt-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400" />
-        </div>
+<div class="bg-black/30 rounded-2xl p-6 mb-6 border border-cyan-400/30 text-center">
+<p class="text-gray-300 text-sm">Total Tagihan</p>
+<h2 class="text-4xl sm:text-5xl font-extrabold text-green-400 mt-2">Rp280.000</h2>
+</div>
 
-        <div class="bg-black/30 border border-cyan-400/30 rounded-2xl p-4 mb-4">
-        <h3 class="text-xl font-bold text-cyan-300 mb-3">Metode Pembayaran</h3>
+<div class="space-y-4 mb-5">
+<div>
+<label class="text-sm text-gray-300">Nama Pembayar</label>
+<input id="nama" type="text" placeholder="Masukkan nama" class="w-full mt-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 outline-none" />
+</div>
+</div>
 
-        <div class="flex flex-col sm:flex-row gap-3 mb-4">
-          <button onclick="showPayment('qris')" class="w-full flex-1 bg-green-500 hover:bg-green-400 py-3 rounded-xl font-bold transition-all text-sm sm:text-base">
-            QRIS
-          </button>
+<div class="bg-black/30 border border-cyan-400/30 rounded-2xl p-4 mb-4">
+<h3 class="text-xl font-bold text-cyan-300 mb-3">Metode Pembayaran</h3>
 
-          <button onclick="showPayment('dana')" class="w-full flex-1 bg-blue-500 hover:bg-blue-400 py-3 rounded-xl font-bold transition-all text-sm sm:text-base">
-            DANA
-          </button>
-        </div>
+<div class="flex flex-col sm:flex-row gap-3 mb-4">
+<button onclick="showPayment('qris')" class="w-full bg-green-500 hover:bg-green-400 py-3 rounded-xl font-bold">
+QRIS
+</button>
 
-        <div id="qrisBox" class="hidden bg-black/40 rounded-2xl border border-green-400/20 p-4 text-center">
-          <p class="text-green-400 font-semibold mb-3">Scan QRIS Berikut</p>
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=PembayaranWifi280000" class="mx-auto rounded-xl border border-white/20 w-full max-w-\[220px\]" />
-        </div>
+<button onclick="showPayment('dana')" class="w-full bg-blue-500 hover:bg-blue-400 py-3 rounded-xl font-bold">
+DANA
+</button>
+</div>
 
-        <div id="danaBox" class="hidden bg-black/40 rounded-2xl border border-blue-400/20 p-4 text-center">
-          <p class="text-blue-400 font-semibold mb-2">Nomor DANA</p>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white break-all">08xxxxxxxxxx</h2>
-          <p class="text-gray-400 text-sm mt-2">Transfer sesuai total tagihan</p>
-        </div>
-      </div>
+<div id="qrisBox" class="hidden bg-black/40 rounded-2xl border border-green-400/20 p-4 text-center">
+<p class="text-green-400 font-semibold mb-3">Scan QRIS Berikut</p>
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=PembayaranWifi280000" class="mx-auto rounded-xl border border-white/20 w-full max-w-[220px]" />
+</div>
 
-      <div>
-          <label class="text-sm text-gray-300">Upload Bukti Transfer</label>
-          <input id="bukti" type="file" class="w-full mt-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-gray-300" />
-        </div>
-      </div>
+<div id="danaBox" class="hidden bg-black/40 rounded-2xl border border-blue-400/20 p-4 text-center">
+<p class="text-blue-400 font-semibold mb-2">Nomor DANA</p>
+<h2 class="text-2xl sm:text-3xl font-bold text-white">08xxxxxxxxxx</h2>
+</div>
+</div>
 
-      <div class="hidden">
-        <h3 class="text-xl font-bold text-cyan-300 mb-3">Metode Pembayaran</h3>
+<div class="mb-5">
+<label class="text-sm text-gray-300">Upload Bukti Transfer</label>
+<input id="bukti" type="file" class="w-full mt-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-gray-300" />
+</div>
 
-        <div class="flex gap-3 mb-4">
-          <button onclick="showPayment('qris')" class="w-full flex-1 bg-green-500 hover:bg-green-400 py-3 rounded-xl font-bold transition-all text-sm sm:text-base">
-            QRIS
-          </button>
+<button onclick="bayarWifi()" class="w-full bg-cyan-500 hover:bg-cyan-400 transition-all duration-300 py-4 rounded-2xl font-bold text-base sm:text-lg shadow-lg shadow-cyan-500/40">
+Kirim Pembayaran
+</button>
 
-          <button onclick="showPayment('dana')" class="w-full flex-1 bg-blue-500 hover:bg-blue-400 py-3 rounded-xl font-bold transition-all text-sm sm:text-base">
-            DANA
-          </button>
-        </div>
+<div id="notif" class="hidden mt-6 bg-yellow-500/20 border border-yellow-400 text-yellow-300 py-3 rounded-xl text-center">
+Pembayaran berhasil dikirim ⏳
+</div>
 
-        <div id="qrisBox" class="hidden bg-black/40 rounded-2xl border border-green-400/20 p-4 text-center">
-          <p class="text-green-400 font-semibold mb-3">Scan QRIS Berikut</p>
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=PembayaranWifi280000" class="mx-auto rounded-xl border border-white/20" />
-        </div>
+</div>
 
-        <div id="danaBox" class="hidden bg-black/40 rounded-2xl border border-blue-400/20 p-4 text-center">
-          <p class="text-blue-400 font-semibold mb-2">Nomor DANA</p>
-          <h2 class="text-3xl font-bold text-white">08xxxxxxxxxx</h2>
-          <p class="text-gray-400 text-sm mt-2">Transfer sesuai total tagihan</p>
-        </div>
-      </div>
+<div class="space-y-6 w-full">
+<div class="bg-white/10 backdrop-blur-xl border border-cyan-400/20 rounded-3xl shadow-2xl p-4 sm:p-6 w-full">
+<h2 class="text-2xl font-bold text-cyan-300 mb-4">Status Pembayaran</h2>
+<div id="pendingList" class="space-y-3"></div>
+</div>
+</div>
 
-      <button onclick="bayarWifi()" class="w-full bg-cyan-500 hover:bg-cyan-400 transition-all duration-300 py-4 rounded-2xl font-bold text-base sm:text-lg shadow-lg shadow-cyan-500/40">
-        Kirim Pembayaran
-      </button>
+</div>
 
-      <div id="notif" class="hidden mt-6 bg-yellow-500/20 border border-yellow-400 text-yellow-300 py-3 rounded-xl text-center">
-        Pembayaran masuk ke status Pending ⏳
-      </div>
-    </div>
+<script>
+function showPayment(type) {
+const qrisBox = document.getElementById('qrisBox');
+const danaBox = document.getElementById('danaBox');
 
-    <div class="space-y-6 w-full">
+qrisBox.classList.add('hidden');
+danaBox.classList.add('hidden');
 
-      <div class="bg-white/10 backdrop-blur-xl border border-cyan-400/20 rounded-3xl shadow-2xl p-4 sm:p-6 w-full">
-        <h2 class="text-2xl font-bold text-cyan-300 mb-4">Status Pembayaran</h2>
+if(type === 'qris') {
+qrisBox.classList.remove('hidden');
+} else {
+danaBox.classList.remove('hidden');
+}
+}
 
-        <div id="pendingList" class="space-y-3"></div>
-      </div>
+function bayarWifi() {
+const nama = document.getElementById('nama').value;
+const metode = document.getElementById('qrisBox').classList.contains('hidden') ? 'DANA' : 'QRIS';
+const bukti = document.getElementById('bukti').files[0];
 
-    </div>
-  </div>
-      </div>
+if(!nama || !bukti) {
+alert('Isi nama dan upload bukti transfer');
+return;
+}
 
-      
+const sekarang = new Date();
 
-    </div>
-  </div>
+const paymentData = {
+nama,
+metode,
+hari: sekarang.toLocaleDateString('id-ID', { weekday: 'long' }),
+tanggal: sekarang.toLocaleDateString('id-ID'),
+jam: sekarang.toLocaleTimeString('id-ID'),
+status: 'PENDING'
+};
 
-  <script>
-    function showPayment(type) {
-      const qrisBox = document.getElementById('qrisBox');
-      const danaBox = document.getElementById('danaBox');
+const reader = new FileReader();
 
-      qrisBox.classList.add('hidden');
-      danaBox.classList.add('hidden');
+reader.onload = function(e) {
+paymentData.bukti = e.target.result;
 
-      if(type === 'qris') {
-        qrisBox.classList.remove('hidden');
-      } else {
-        danaBox.classList.remove('hidden');
-      }
-    }
+const oldData = JSON.parse(localStorage.getItem('wifiPayments')) || [];
+oldData.push(paymentData);
+localStorage.setItem('wifiPayments', JSON.stringify(oldData));
 
-    function bayarWifi() {
-      const nama = document.getElementById('nama').value;
-      const metode = document.getElementById('qrisBox').classList.contains('hidden') ? 'DANA' : 'QRIS';
-      const bukti = document.getElementById('bukti').files[0];
-      const notif = document.getElementById('notif');
-      const pendingList = document.getElementById('pendingList');
+loadStatus();
 
-      if (!nama || !bukti) {
-        alert('Harap isi nama dan upload bukti transfer!');
-        return;
-      }
+document.getElementById('notif').classList.remove('hidden');
+}
 
-      notif.classList.remove('hidden');
+reader.readAsDataURL(bukti);
+}
 
-      const sekarang = new Date();
-      const tanggal = sekarang.toLocaleDateString('id-ID');
-      const jam = sekarang.toLocaleTimeString('id-ID');
+function loadStatus() {
+const pendingList = document.getElementById('pendingList');
+pendingList.innerHTML = '';
 
-      const item = document.createElement('div');
-      item.className = 'bg-black/30 rounded-xl p-4 border border-yellow-400/20';
+const data = JSON.parse(localStorage.getItem('wifiPayments')) || [];
 
-      item.innerHTML = `
-        <div class="flex justify-between items-center mb-2">
-          <h3 class="font-bold text-white">${nama}</h3>
-          <span class="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full text-xs">PENDING</span>
-        </div>
-        <p class="text-gray-300 text-sm">Metode Pembayaran: ${metode}</p>
-        <p class="text-gray-400 text-sm">Tanggal: ${tanggal}</p>
-        <p class="text-gray-400 text-sm">Waktu: ${jam}</p>
-        <p class="text-green-400 text-sm mt-1">Bukti Transfer: ${bukti.name}</p>
-        <p class="text-yellow-300 text-sm mt-3 font-semibold">Pembayaran masih dalam proses pengecekan ⏳</p>
-        <div class="mt-3 bg-yellow-500/10 border border-yellow-400/20 rounded-xl p-3 text-yellow-300 text-sm text-center">
-          Menunggu konfirmasi dari admin WiFi ⏳
-        </div>
-      `;
+data.forEach(payment => {
+const item = document.createElement('div');
 
-      pendingList.prepend(item);
+item.className = payment.status === 'SUCCESS'
+? 'bg-black/30 rounded-xl p-4 border border-green-400/20'
+: 'bg-black/30 rounded-xl p-4 border border-yellow-400/20';
 
-      setTimeout(() => {
-        notif.classList.add('hidden');
-      }, 3000);
-    }
+item.innerHTML = `
+<div class="flex justify-between items-center mb-2 flex-wrap gap-2">
+<h3 class="font-bold text-white">${payment.nama}</h3>
+<span class="${payment.status === 'SUCCESS' ? 'bg-green-500/20 text-green-300' : 'bg-yellow-500/20 text-yellow-300'} px-3 py-1 rounded-full text-xs">${payment.status}</span>
+</div>
 
-    function approvePayment(button, nama, metode, tanggal, jam, bukti) {
-      const parent = button.parentElement;
+<p class="text-gray-300 text-sm">Metode Pembayaran: ${payment.metode}</p>
+<p class="text-gray-400 text-sm">Hari: ${payment.hari}</p>
+<p class="text-gray-400 text-sm">Tanggal: ${payment.tanggal}</p>
+<p class="text-gray-400 text-sm">Waktu: ${payment.jam}</p>
 
-      parent.innerHTML = `
-        <div class="flex justify-between items-center mb-2">
-          <h3 class="font-bold text-white">${nama}</h3>
-          <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs">SUCCESS</span>
-        </div>
-        <p class="text-gray-300 text-sm">Metode Pembayaran: ${metode}</p>
-        <p class="text-gray-400 text-sm">Tanggal: ${tanggal}</p>
-        <p class="text-gray-400 text-sm">Waktu: ${jam}</p>
-        <p class="text-green-400 text-sm mt-1">Bukti Transfer: ${bukti}</p>
-        <p class="text-green-300 text-sm mt-3 font-semibold">Pembayaran telah berhasil disetujui ✅</p>
-      `;
+<p class="${payment.status === 'SUCCESS' ? 'text-green-300' : 'text-yellow-300'} text-sm mt-3 font-semibold">
+${payment.status === 'SUCCESS' ? 'Pembayaran berhasil dikonfirmasi admin ✅' : 'Menunggu konfirmasi admin WiFi ⏳'}
+</p>
+`;
 
-      parent.className = 'bg-black/30 rounded-xl p-4 border border-green-400/20';
-    }
-  </script>
+pendingList.prepend(item);
+});
+}
+
+window.onload = loadStatus;
+</script>
 
 </body>
 </html>
