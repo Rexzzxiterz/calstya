@@ -156,9 +156,9 @@
         <p class="text-gray-400 text-sm">Waktu: ${jam}</p>
         <p class="text-green-400 text-sm mt-1">Bukti Transfer: ${bukti.name}</p>
         <p class="text-yellow-300 text-sm mt-3 font-semibold">Pembayaran masih dalam proses pengecekan ⏳</p>
-        <button onclick="approvePayment(this, '${nama}', '${metode}', '${tanggal}', '${jam}', '${bukti.name}')" class="mt-3 w-full bg-green-500 hover:bg-green-400 py-2 rounded-xl font-semibold">
-          Approve Pembayaran
-        </button>
+        <div class="mt-3 bg-yellow-500/10 border border-yellow-400/20 rounded-xl p-3 text-yellow-300 text-sm text-center">
+          Menunggu konfirmasi dari admin WiFi ⏳
+        </div>
       `;
 
       pendingList.prepend(item);
